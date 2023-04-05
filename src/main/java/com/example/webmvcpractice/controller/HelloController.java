@@ -14,7 +14,7 @@ public class HelloController {
         return "hello";
     }
 
-    // 매개변수를 넘겨받는 방법
+     //매개변수를 넘겨받는 방법
     // @PathVariable 을 이용하면 /{id} 처럼 URI 경로로 넘어오는 값을 변수로 받아 올 수 있다.
     // localhost:8080/{id}
     @GetMapping("/testGetMapping")
@@ -23,14 +23,14 @@ public class HelloController {
     }
 
 
-    @GetMapping("/{id}")
-    public String testControllerWithPathVariable(@PathVariable(required = false) int id){
-        return "id : " + id;
+    @GetMapping("/{user}/{id}")
+    public String testControllerWithPathVariable(@PathVariable String user,
+                                                 @PathVariable(required = false) int id){
+        return "user : "+ user +", id : " + id;
     }
-    // @GetMapping("/{id}") 는 경로로 들어오는 임의의 숫자 또는 문자를 변수 id에 매핑하라는 뜻.
-    // 그림에서는 id가 정수형이므로 test/ 다음에 오는 정수가 id에 매핑된다.
-    // required = false는 이 매개변수가 꼭 필요한건 아니라는 뜻이다.
-    // 상단에 있는 매개변수 id 의 타입을 String 타입으로 변환시켜도 스프링에서 알아서 타입변환을 해서 자동으로 값을 대입해준다.
+//     @GetMapping("/{id}") 는 경로로 들어오는 임의의 숫자 또는 문자를 변수 id에 매핑하라는 뜻.
+//     그림에서는 id가 정수형이므로 test/ 다음에 오는 정수가 id에 매핑된다.
+//     required = false는 이 매개변수가 꼭 필요한건 아니라는 뜻이다.
 
 
     @GetMapping("/testRequestParam")
