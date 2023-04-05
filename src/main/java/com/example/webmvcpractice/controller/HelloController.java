@@ -3,6 +3,7 @@ package com.example.webmvcpractice.controller;
 
 import com.example.webmvcpractice.dto.ResponseDTO;
 import com.example.webmvcpractice.dto.TestRequestBodyDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -54,16 +55,27 @@ public class HelloController {
     // 클라이언트는 요청 바디로 JSON 형태의 문자열을 넘겨준다.
     // 이 JSON의 내부는 의미적으로 TestRequestBodyDTO와 같아야 한다.
 
-
-    @GetMapping("/testResponseBody")
-    public ResponseDTO<String> testControllerResponseBody(){
+    @GetMapping("/testResponseBody1")
+    public ResponseDTO<String> testControllerResponseBody1() {
         List<String> list = new ArrayList<>();
         list.add("hi BABO");
         list.add("YES, YOUR BABO");
 
-        return  ResponseDTO.<String>builder()
+        return ResponseDTO.<String>builder()
                 .data(list)
                 .build();
+    }
+
+    @GetMapping("/testResponseBody2")
+    public ResponseEntity<?> testControllerResponseBody2(){
+        List<String> list = new ArrayList<>();
+        list.add("hi BABO");
+        list.add("YES, YOUR BABO");
+        ResponseDTO<String> response = ResponseDTO.<String>builder()
+                .data(list)
+                .build();
+
+        return ResponseEntity.ok().body(response);
     }
 
 
