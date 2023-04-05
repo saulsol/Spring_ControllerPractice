@@ -1,8 +1,8 @@
 package com.example.webmvcpractice.dto;
 
-public class ExamDto {
+public class TestRequestBodyDTO {
 
     public String id;
-    public String name;
+    public String message;
 
 }
