@@ -17,6 +17,12 @@ public class HelloController {
     // 매개변수를 넘겨받는 방법
     // @PathVariable 을 이용하면 /{id} 처럼 URI 경로로 넘어오는 값을 변수로 받아 올 수 있다.
     // localhost:8080/{id}
+    @GetMapping("/testGetMapping")
+    public String testGetMapping(){
+        return "getMappingTest";
+    }
+
+
     @GetMapping("/{id}")
     public String testControllerWithPathVariable(@PathVariable(required = false) int id){
         return "id : " + id;
