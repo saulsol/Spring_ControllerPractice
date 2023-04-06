@@ -87,6 +87,20 @@ public class HelloController {
 
     }
 
+    @PostMapping("/postTest")
+    public String postRequestTest(@RequestBody TestRequestBodyDTO dto){
+        System.out.println(dto);
+        return "test id : " + dto.id + ", test message : " + dto.message;
+    }
+
+
+    @PutMapping("/putTest")
+    public String putRequestTest(@RequestBody TestRequestBodyDTO dto){
+        System.out.println(dto);
+        return "test id : " + dto.id + ", test message : " + dto.message;
+    }
+
+
 
 
 }
