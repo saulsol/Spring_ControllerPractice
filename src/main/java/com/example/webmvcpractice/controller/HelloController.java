@@ -3,6 +3,7 @@ package com.example.webmvcpractice.controller;
 
 import com.example.webmvcpractice.dto.ResponseDTO;
 import com.example.webmvcpractice.dto.TestRequestBodyDTO;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -78,6 +79,13 @@ public class HelloController {
         return ResponseEntity.ok().body(response);
     }
 
+
+    @GetMapping("/requestTest1")
+    @ResponseStatus(HttpStatus.OK)
+    public String getRequestParam( @RequestBody TestRequestBodyDTO dto){
+        return "test id : " + dto.id + ", test message : " + dto.message;
+
+    }
 
 
 
