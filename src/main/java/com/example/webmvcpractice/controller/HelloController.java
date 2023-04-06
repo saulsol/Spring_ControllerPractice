@@ -100,7 +100,14 @@ public class HelloController {
         return "test id : " + dto.id + ", test message : " + dto.message;
     }
 
+    @DeleteMapping("deleteTest/{userID}")
+    public String deleteTest(@PathVariable int userID){
+        return "userID : " + userID + " deleted";
+    }
 
-
+    @DeleteMapping("/deleteTest")
+    public String deleteRequestTest(@RequestParam String email){
+        return "email : " + email + " deleted";
+    }
 
 }
