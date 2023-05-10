@@ -121,20 +121,20 @@ public class HelloController {
         throw new Exception();
     }
 
-    @ExceptionHandler(value = Exception.class)
-    public ResponseEntity<Map<String, String>> exceptionHandlerMethod(Exception e){
-        HttpHeaders responseHeaders = new HttpHeaders();
-
-        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
-        System.out.println( "컨트롤러 내 메세지 : " + e.getMessage());
-
-        Map<String, String> map = new HashMap<>();
-        map.put("Error Type", httpStatus.getReasonPhrase());
-        map.put("code", "400");
-        map.put("message", "에러 발생");
-
-        return new ResponseEntity<>(map, responseHeaders, httpStatus);
-    }
+//    @ExceptionHandler(value = Exception.class)
+//    public ResponseEntity<Map<String, String>> exceptionHandlerMethod(Exception e){
+//        HttpHeaders responseHeaders = new HttpHeaders();
+//
+//        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+//        System.out.println( "컨트롤러 내 메세지 : " + e.getMessage());
+//
+//        Map<String, String> map = new HashMap<>();
+//        map.put("Error Type", httpStatus.getReasonPhrase());
+//        map.put("code", "400");
+//        map.put("message", "에러 발생");
+//
+//        return new ResponseEntity<>(map, responseHeaders, httpStatus);
+//    }
 
 
 

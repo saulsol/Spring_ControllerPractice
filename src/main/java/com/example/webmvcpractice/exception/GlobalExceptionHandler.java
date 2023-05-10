@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestControllerAdvice
+@RestControllerAdvice(basePackages = "com.example.webmvcpractice.controller")
 // 컨트롤러단에서 발생하는 에러는 여기서 다 처리하겠다.
 public class GlobalExceptionHandler {
 
