@@ -3,12 +3,15 @@ package com.example.webmvcpractice.controller;
 
 import com.example.webmvcpractice.dto.ResponseDTO;
 import com.example.webmvcpractice.dto.TestRequestBodyDTO;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/test")
@@ -109,5 +112,32 @@ public class HelloController {
     public String deleteRequestTest(@RequestParam String email){
         return "email : " + email + " deleted";
     }
+
+
+    // Exception Handling Test
+    // URL:test/exception
+    @PostMapping("/exception")
+    public void exceptionTest()throws Exception{
+        throw new Exception();
+    }
+
+    @ExceptionHandler(value = Exception.class)
+    public ResponseEntity<Map<String, String>> exceptionHandlerMethod(Exception e){
+        HttpHeaders responseHeaders = new HttpHeaders();
+
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+        System.out.println( "컨트롤러 내 메세지 : " + e.getMessage());
+
+        Map<String, String> map = new HashMap<>();
+        map.put("Error Type", httpStatus.getReasonPhrase());
+        map.put("code", "400");
+        map.put("message", "에러 발생");
+
+        return new ResponseEntity<>(map, responseHeaders, httpStatus);
+    }
+
+
+
+
 
 }
