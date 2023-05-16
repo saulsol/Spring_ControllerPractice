@@ -14,7 +14,6 @@ import java.util.Map;
 // 해당 클래스에서 발생하는 오류는 전부 이 핸들러 객체에서 처리
 public class GlobalExceptionHandler {
 
-
     @ExceptionHandler(value = Exception.class)
     public ResponseEntity<Map<String, String>> exceptionHandler(Exception e){
         HttpHeaders responseHeaders = new HttpHeaders();
@@ -29,5 +28,23 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(map, responseHeaders, httpStatus);
     }
+
+    @ExceptionHandler(value = MemberException.class)
+    public ResponseEntity<Map<String, String>> memberExceptionHandler(MemberException e){
+        HttpHeaders responseHeaders = new HttpHeaders();
+
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+        System.out.println( "Advice 내 메세지 : " + e.getBaseExceptionType().getErrorMessage());
+
+        Map<String, String> map = new HashMap<>();
+        map.put("Error Type", httpStatus.getReasonPhrase());
+        map.put("code", "400");
+        map.put("message", e.getBaseExceptionType().getErrorMessage());
+
+        return new ResponseEntity<>(map, responseHeaders, httpStatus);
+    }
+
+
+
 
 }

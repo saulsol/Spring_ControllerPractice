@@ -3,6 +3,8 @@ package com.example.webmvcpractice.controller;
 
 import com.example.webmvcpractice.dto.ResponseDTO;
 import com.example.webmvcpractice.dto.TestRequestBodyDTO;
+import com.example.webmvcpractice.exception.MemberException;
+import com.example.webmvcpractice.exception.MemberExceptionType;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -136,7 +138,10 @@ public class HelloController {
 //        return new ResponseEntity<>(map, responseHeaders, httpStatus);
 //    }
 
-
+    @PostMapping("/memberException")
+    public void memberExceptionTest(){
+        throw new MemberException(MemberExceptionType.NOT_FOUND_MEMBER);
+    }
 
 
 
